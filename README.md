@@ -22,7 +22,7 @@ pip install matplotlib
 
 ## Usage:
 
-First, you need to import the `Lamb` class from the `lamb` module, and create an instance of this class.
+First, you need to import the `Lamb` class from the `lamb` module, and create an instanciate it. For this example, we are going to use a 10 mm Aluminum plate.
 
 ```python
 from lamb import Lamb
@@ -57,6 +57,8 @@ The following parameters are optional:
 
 * ***Phase Velocity***
 
+To generate a plot of phase velocity as a function of frequency × thickness, you can use:
+
 ```python
 alum.plot_phase_velocity()
 ```
@@ -78,6 +80,8 @@ You can use the following optional parameters with this method:
 
 * ***Group Velocity***
 
+To generate a plot of group velocity as a function of frequency × thickness, you can use:
+
 ```python
 alum.plot_group_velocity()
 ```
@@ -98,6 +102,8 @@ You can use the following optional parameters with this method:
 
 * ***Wave Number***
 
+To generate a plot of wave number as a function of frequency × thickness, you can use:
+
 ```python
 alum.plot_wave_number()
 ```
@@ -116,6 +122,8 @@ You can use the following optional parameters with this method:
 `antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
 
 * ***Wave Structure***
+
+To generate a plot of the wave structure (i.e., the displacement profile across the thickness of the plate), you can use:
 
 ```python
 alum.plot_wave_structure(mode='A0', nrows=3, ncols=2, fd=[500, 1000, 1500, 2000, 2500, 3000])
@@ -141,6 +149,8 @@ The following parameters are optional:
 `outofplane_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the out-of-plane curves (to change color, linewidth, linestyle, etc.).  
 
 * ***Particle Displacement Field***
+
+To generate an animation of the particle displacement field, you can use:
 
 ```python
 alum.animate_displacement(mode='A0', fd=1000)
@@ -177,45 +187,45 @@ Lamb.ffmpeg_path = 'C:/Program Files/ImageMagick-7.0.10-Q16/ffmpeg.exe'
 
 If you are using some flavor of Unix, chances are ImageMagick is already installed on your computer.  
 
+### Attributes
+
+* ***Phase Velocity***
+
+You can use the attributes `vp_sym` and `vp_antisym` to find the phase velocity at a particular `fd` value or an array of `fd` values. They are dictionaries with interpolators at each mode, where the keys are "A0", "A1", "A2", ..., "An" (for `vp_antisym`) and "S0", "S1", "S2", ..., "Sn" (for `vp_sym`), with 'n' being the order of the corresponding mode.  
+
+For example, if you need the phase velocity for the S0 mode at 1000 kHz × mm, you can do:
+
+```python
+alum.vp_sym['S0'](1000)
+```      
+
+And this should return 5265.14 m/s. Always make sure that the fd values are within the valid range for the corresponding mode (i. e., above the cutoff frequency and below the `fd_max` you chose). Also, make sure the mode selected is within the selected `nmodes`. For example, if you chose `nmodes_sym = 5`, you can use 'S0', 'S1', 'S2', 'S3' or 'S4'.
+
+* ***Group Velocity***
+
+You can use the attributes `vg_sym` and `vg_antisym` to find the group velocity at a particular `fd` value or an array of `fd` values. They are dictionaries with interpolators at each mode, where the keys are "A0", "A1", "A2", ..., "An" (for `vg_antisym`) and "S0", "S1", "S2", ..., "Sn" (for `vg_sym`), with 'n' being the order of the corresponding mode.  
+
+For example, if you need the group velocity for the A1 mode at 2000, 3000, and 4000 kHz × mm, you can do:
+
+```python
+alum.vg_antisym['A1']([2000,3000,4000])
+```      
+
+And this should return 3241.72, 3577.26, and 2486.33 m/s. Always make sure that the fd values are within the valid range for the corresponding mode (i. e., above the cutoff frequency and below the `fd_max` you chose). Also, make sure the mode selected is within the selected `nmodes`. For example, if you chose `nmodes_antisym = 5`, you can use 'A0', 'A1', 'A2', 'A3' or 'A4'.
+
+* ***Wave Number***
+
+You can use the attributes `k_sym` and `k_antisym` to find the wave number at a particular `fd` value or an array of `fd` values. They are dictionaries with interpolators at each mode, where the keys are "A0", "A1", "A2", ..., "An" (for `k_antisym`) and "S0", "S1", "S2", ..., "Sn" (for `k_sym`), with 'n' being the order of the corresponding mode.  
+
+For example, if you need the wave number for the S3 mode at 8000 kHz × mm, you can do:
+
+```python
+alum.k_sym['S0'](8000)
+```      
+
+And this should return 726.38 m-1. Always make sure that the fd values are within the valid range for the corresponding mode (i. e., below the `fd_max` you chose). Also, make sure the mode selected is within the selected `nmodes`. For example, if you chose `nmodes_sym = 5`, you can use 'S0', 'S1', 'S2', 'S3' or 'S4'.
+
 Run `example_code.py` for a ... continuara.
-
-2. Select a subject from the CIPIC database. You should select a subject with similar anthropometric measurements as yourself for the best experience.
-
-      ***Note:** Due to storage limitations, the repository has only 4 subjects of the database to choose from. The full database is ~170MB and has 45 subjects. It can be [downloaded for free](https://www.ece.ucdavis.edu/cipic/spatial-sound/hrtf-data/) at the CIPIC webpage. Make sure to download the MATLAB version of the database. In order to make it work, you should simply replace the folder `CIPIC_hrtf_database` with the one you downloaded.*
-
-   ![alt text](https://i.imgur.com/wgbHujh.png)
-
-3. Press `Play` to start playing the default sound file. Make sure to be using headphones as your audio output. Move the Azimuth and        Elevation sliders to position the sound in the 3D space. You can load your own audio file in File/Load audio file. Also, there are      other sound samples in the folder resources/sound.
-   
-   **IMPORTANT: For now, the only working format is a mono WAV file at 44100 Hz sample rate and 16 bit depth.**
-   
-   You can save the file at the specified pair of Azimuth/Elevation in `File/Save audio file`.
-   Lastly, you can choose to use a crossover in order not to spatialize low frequencies, since low frequencies are non-directional in      nature. Go to `Settings/Change cutoff frequency` to set the desired frequency. By default, crossover is set at 200 Hz.
-
-   ![alt text](https://i.imgur.com/xmcz00n.png)
-
-## Implementation details
-
-Before sound arrives to the auditory system, it is filtered by the diffraction and reflection properties of the head, pinna, and torso. This information is captured in the head related transfer function (HRTF), a pair of functions (one for each ear) that characterizes how an ear receives a sound from a point in space. The HRTF is highly dependent on the location of the sound source relative to the listener, which is the main reason we are able to locate the sound source. A pair of HRTFs for two ears can be used to synthesize a binaural sound that seems to come from a particular point in space.
-
-The CIPIC database provides head related impulse responses (HRIR), that is, the inverse Fourier transform of the HRTF. The process of positioning a sound source in a virtual space using HRIRs consists on the convolution of the mono signal with the HRIR for left and right ear:
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=x_{L,&space;R}(t)&space;=&space;h_{L,&space;R}(t)&space;*&space;x(t)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{L,&space;R}(t)&space;=&space;h_{L,&space;R}(t)&space;*&space;x(t)" title="x_{L, R}(t) = h_{L, R}(t) * x(t)" /></a>
-
-![alt text](https://i.imgur.com/WCnl0mG.png)
-
-### HRIR Interpolation
-
-The CIPIC database has HRIRs for a finite set of points in space. Nevertheless, it would be desirable to pan the audio source in space 
-smoothly, without audible jumps from one point to another. Therefore, an interpolation must be made for the points in space in which there are no HRIRs recorded. For this panner, the interpolation approach outlined by H. Gamper [in this paper](https://asa.scitation.org/doi/full/10.1121/1.4828983) (available for free) is used.
-
-In short, the method consists on performing a triangulation of the measured set of points (every combination of azimuth, elevation). These points become then vertices for every triangle in the triangulation. Lastly, the interpolated HRIR at any point X inside a triangle can be represented as the weighted sum of the HRIRs measured at each vertex of the triangle, using its barycentric coordinates as interpolation weights.
-
-### Real-time convolution
-
-It is also desirable that filtering is performed in real time, so that the audio changes as the user move the azimuth/elevation sliders. This procedure is not straightforward: since the length of the convolution between signals with length L and M would be L+M-1, it is not possible to simply concatenate the output blocks. Another issue that must be taken into account is the aliasing introduced by the cyclic FFT convolution.
-
-To overcome these issues, the [overlap-save method](https://en.wikipedia.org/wiki/Overlap%E2%80%93save_method) is implemented. In short, this method consists on breaking the input audio signal into chunks of size L, transform the chunks into the frequency domain with the FFT and multiply it by the impulse response's DFT (i.e. convolution in time domain), transform back to the time domain and lop on the last L samples from the resulting L+M-1 chunk.
 
 ## License
 
