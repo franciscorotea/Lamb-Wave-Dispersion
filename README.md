@@ -55,7 +55,7 @@ The following parameters are optional:
 
 ### Methods
 
-* ***Plot phase velocity***
+* ***Phase Velocity***
 
 ```python
 alum.plot_phase_velocity()
@@ -76,7 +76,7 @@ You can use the following optional parameters with this method:
 `sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
 `antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
 
-* ***Plot group velocity***
+* ***Group Velocity***
 
 ```python
 alum.plot_group_velocity()
@@ -96,7 +96,7 @@ You can use the following optional parameters with this method:
 `sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
 `antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
 
-* ***Plot wave number***
+* ***Wave Number***
 
 ```python
 alum.plot_wave_number()
@@ -115,7 +115,7 @@ You can use the following optional parameters with this method:
 `sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
 `antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
 
-* ***Plot wave structure***
+* ***Wave Structure***
 
 ```python
 alum.plot_wave_structure(mode='A0', nrows=3, ncols=2, fd=[500, 1000, 1500, 2000, 2500, 3000])
@@ -140,7 +140,7 @@ The following parameters are optional:
 `inplane_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the in-plane curves (to change color, linewidth, linestyle, etc.).  
 `outofplane_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the out-of-plane curves (to change color, linewidth, linestyle, etc.).  
 
-* ***Plot wave structure***
+* ***Particle Displacement Field***
 
 ```python
 alum.animate_displacement(mode='A0', fd=1000)
