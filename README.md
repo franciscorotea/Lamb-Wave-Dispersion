@@ -6,10 +6,6 @@ Lamb waves propagate as two infinite sets of modes: ***symmetric modes***, in wh
 
 This Python package presents tools to calculate and plot Lamb wave dispersion curves and particle displacement in traction-free, homogeneous and isotropic plates.
 
-# 3D Audio Panner
-
-This code provides a Python implementation of a 3D Audio Panner with a GUI, using the head-related impulse responses (HRIR) recorded in the [CIPIC HRTF Database](https://www.ece.ucdavis.edu/cipic/spatial-sound/hrtf-data/) by the CIPIC Interface Laboratory at UC Davis.
-
 ## Getting Started
 
 The code is tested with Python 3.7. Next section provides the prerequisites to run the program.
@@ -26,7 +22,162 @@ pip install matplotlib
 
 ## Usage:
 
-1. Run `example_code.py`.
+First, you need to import the `Lamb` class from the `lamb` module, and create an instance of this class.
+
+```python
+from lamb import Lamb
+
+alum = Lamb(thickness=10, 
+            nmodes_sym=5, 
+            nmodes_antisym=5, 
+            fd_max=10000, 
+            vp_max=15000, 
+            c_L=6420, 
+            c_S=3040)
+```
+
+#### Parameters:
+    
+`thickness`: Thickness of the plate, in mm.  
+`nmodes_sym`: Number of symmetric modes to calculate.  
+`nmodes_antisym`: Number of antisymmetric modes to calculate.  
+`fd_max`: Maximum value of frequency × thickness to calculate, in kHz × mm.  
+`vp_max`: Maximum value of phase velocity to calculate, in m/s.  
+`c_L`: Longitudinal wave velocity of the material, in m/s.  
+`c_S`: Shear wave velocity of the material, in m/s.   
+    
+The following parameters are optional:
+        
+`c_R`: Rayleigh wave velocity of the material, in m/s. Defaults to None.  
+`fd_points`: Number of frequency × thickness points. Defaults to 100.  
+`vp_step`: Increment between phase velocity intervals. Defaults to 100.  
+`material`: Name of the material being analyzed. Defaults to ''.  
+
+### Methods
+
+* ***Plot phase velocity***
+
+```python
+alum.plot_phase_velocity()
+```
+
+This method produces the following plot:
+
+   ![alt text](https://i.imgur.com/yrHQj9L.png)
+   
+#### Parameters:
+
+You can use the following optional parameters with this method:  
+
+`modes`: Which family of modes to plot. Can be 'symmetric', 'antisymmetric' or 'both'. Defaults to 'both'.  
+`cutoff_frequencies`: Add cutoff frequencies to the plot. Defaults to True.  
+`material_velocities`: Add material velocities (longitudinal, shear and Rayleigh) to the plot. Defaults to True.  
+`save_img`: Save the result image as png. Defaults to False.  
+`sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
+`antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
+
+* ***Plot group velocity***
+
+```python
+alum.plot_group_velocity()
+```
+
+This method produces the following plot:
+
+   ![alt text](https://i.imgur.com/HfcJfJI.png)
+   
+#### Parameters:
+
+You can use the following optional parameters with this method:  
+
+`modes`: Which family of modes to plot. Can be 'symmetric', 'antisymmetric' or 'both'. Defaults to 'both'.  
+`cutoff_frequencies`: Add cutoff frequencies to the plot. Defaults to True.  
+`save_img`: Save the result image as png. Defaults to False.  
+`sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
+`antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
+
+* ***Plot wave number***
+
+```python
+alum.plot_wave_number()
+```
+
+This method produces the following plot:
+
+   ![alt text](https://i.imgur.com/uLitFVR.png)
+   
+#### Parameters:
+
+You can use the following optional parameters with this method:  
+
+`modes`: Which family of modes to plot. Can be 'symmetric', 'antisymmetric' or 'both'. Defaults to 'both'.   
+`save_img`: Save the result image as png. Defaults to False.  
+`sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
+`antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
+
+* ***Plot wave structure***
+
+```python
+alum.plot_wave_structure(mode='A0', nrows=3, ncols=2, fd=[500, 1000, 1500, 2000, 2500, 3000])
+```
+
+This method produces the following plot:
+
+   ![alt text](https://i.imgur.com/F3fNEvL.png)
+   
+#### Parameters:
+
+This method has to be used with the following parameters:  
+
+`mode`: Mode to be analyzed. Can be "A0", "A1", "A2", ..., "An" or "S0", "S1", "S2", ..., "Sn", with 'n' being the order of the corresponding mode.  
+`nrows`: Number of rows in the subplot.  
+`ncols`: Number of columns in the subplot.  
+`fd`: Array with the frequency × thickness values to analyze. The length of the array must be equal to `nrows` x `ncols`.  
+
+The following parameters are optional:
+
+`save_img`: Number of rows in the subplot. Defaults to False.  
+`inplane_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the in-plane curves (to change color, linewidth, linestyle, etc.).  
+`outofplane_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the out-of-plane curves (to change color, linewidth, linestyle, etc.).  
+
+* ***Plot wave structure***
+
+```python
+alum.animate_displacement(mode='A0', fd=1000)
+```
+
+This method produces the following animation:
+
+   ![alt text](https://thumbs.gfycat.com/OrderlyEnviousBoilweevil-size_restricted.gif)
+   
+#### Parameters:
+
+This method has to be used with the following parameters:  
+
+`mode`: Mode to be animated. Can be "A0", "A1", "A2", ..., "An" or "S0", "S1", "S2", ..., "Sn", with 'n' being the order of the corresponding mode.  
+`fd`: Frequency × thickness value to animate.
+
+The following parameters are optional:
+
+`speed`: Delay between frames in milliseconds. It can be used to control the speed of the rotating vectors in the animation (a smaller value produces a faster animation). Defaults to 30.  
+`save_gif`: Set to True if you want to save the result animation as a gif. Defaults to False.  
+`save_video`: Choose a video format if you want to save the result animation as a video. Can be 'mp4', 'mov' or 'avi'. Defaults to False.  
+
+***Note***: If you want to save the animation as a gif, you should install [ImageMagick](http://www.imagemagick.org/script/download.php) and specify the full path to magick.exe like this before using the `animate_displacement` method:
+
+```python
+Lamb.magick_path = 'C:/Program Files/ImageMagick-7.0.10-Q16/magick.exe'
+```
+
+If you want to save the animation as .mp4, .avi or .mov, you should specify the full path to the ffmpeg executable in ImageMagick installation folder:
+
+```python
+Lamb.ffmpeg_path = 'C:/Program Files/ImageMagick-7.0.10-Q16/ffmpeg.exe'
+```    
+
+If you are using some flavor of Unix, chances are ImageMagick is already installed on your computer.  
+
+Run `example_code.py` for a ... continuara.
 
 2. Select a subject from the CIPIC database. You should select a subject with similar anthropometric measurements as yourself for the best experience.
 
