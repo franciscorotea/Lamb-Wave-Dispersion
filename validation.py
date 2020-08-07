@@ -18,7 +18,7 @@ alum = Lamb(thickness=1,
             fd_max=10000, 
             vp_max=15000, 
             c_L=6420,
-            c_T=3040)
+            c_S=3040)
 
 # Plot phase velocity using the Lamb class.
 
