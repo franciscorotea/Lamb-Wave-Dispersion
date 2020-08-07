@@ -251,6 +251,13 @@ Group velocity validation:
 
 As can be seen, the results are almost identical. The only difference is that Dispersion has an extended velocity range.
 
+## References
+
+For information about the equations implemented, please refer to:
+
+[1] Rose, J. L., Ultrasonic Guided Waves in Solid Media, Chapter 6: Waves in Plates, Cambridge University Press, 2014.  
+[2] Graff, K. F., Wave Motion in Elastic Solids, Chapter 8: Wave Propagation in Plates and Rods, Dover Publications, 1975.  
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
