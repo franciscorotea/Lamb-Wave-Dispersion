@@ -55,7 +55,7 @@ The following parameters are optional:
 
 ### Methods
 
-* ***Phase Velocity***
+* **Phase Velocity**
 
 To generate a plot of phase velocity as a function of frequency × thickness, you can use:
 
@@ -78,7 +78,7 @@ You can use the following optional parameters with this method:
 `sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
 `antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
 
-* ***Group Velocity***
+* **Group Velocity**
 
 To generate a plot of group velocity as a function of frequency × thickness, you can use:
 
@@ -100,7 +100,7 @@ You can use the following optional parameters with this method:
 `sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
 `antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
 
-* ***Wave Number***
+* **Wave Number**
 
 To generate a plot of wave number as a function of frequency × thickness, you can use:
 
@@ -121,7 +121,7 @@ You can use the following optional parameters with this method:
 `sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
 `antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
 
-* ***Wave Structure***
+* **Wave Structure**
 
 To generate a plot of the wave structure (i.e., the displacement profile across the thickness of the plate), you can use:
 
@@ -148,7 +148,7 @@ The following parameters are optional:
 `inplane_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the in-plane curves (to change color, linewidth, linestyle, etc.).  
 `outofplane_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the out-of-plane curves (to change color, linewidth, linestyle, etc.).  
 
-* ***Particle Displacement Field***
+* **Particle Displacement Field**
 
 To generate an animation of the particle displacement field, you can use:
 
@@ -187,7 +187,7 @@ Lamb.ffmpeg_path = 'C:/Program Files/ImageMagick-7.0.10-Q16/ffmpeg.exe'
 
 If you are using some flavor of Unix, chances are ImageMagick is already installed on your computer. 
 
-* ***Save Results***
+* **Save Results**
 
 To save all results to a txt file, you can use:
 
@@ -197,7 +197,7 @@ alum.save_results()
 
 ### Attributes
 
-* ***Phase Velocity***
+* **Phase Velocity**
 
 You can use the attributes `vp_sym` and `vp_antisym` to find the phase velocity at a particular `fd` value or an array of `fd` values. They are dictionaries with interpolators at each mode, where the keys are "A0", "A1", "A2", ..., "An" (for `vp_antisym`) and "S0", "S1", "S2", ..., "Sn" (for `vp_sym`), with 'n' being the order of the corresponding mode.  
 
@@ -209,7 +209,7 @@ alum.vp_sym['S0'](1000)
 
 And this should return 5265.14 m/s. Always make sure that the fd values are within the valid range for the corresponding mode (i. e., above the cutoff frequency and below the `fd_max` you chose). Also, make sure the mode selected is within the selected `nmodes`. For example, if you chose `nmodes_sym = 5`, you can use 'S0', 'S1', 'S2', 'S3' or 'S4'.
 
-* ***Group Velocity***
+* **Group Velocity**
 
 You can use the attributes `vg_sym` and `vg_antisym` to find the group velocity at a particular `fd` value or an array of `fd` values. They are dictionaries with interpolators at each mode, where the keys are "A0", "A1", "A2", ..., "An" (for `vg_antisym`) and "S0", "S1", "S2", ..., "Sn" (for `vg_sym`), with 'n' being the order of the corresponding mode.  
 
@@ -221,7 +221,7 @@ alum.vg_antisym['A1']([2000,3000,4000])
 
 And this should return 3241.72, 3577.26, and 2486.33 m/s. Always make sure that the fd values are within the valid range for the corresponding mode (i. e., above the cutoff frequency and below the `fd_max` you chose). Also, make sure the mode selected is within the selected `nmodes`. For example, if you chose `nmodes_antisym = 5`, you can use 'A0', 'A1', 'A2', 'A3' or 'A4'.
 
-* ***Wave Number***
+* **Wave Number**
 
 You can use the attributes `k_sym` and `k_antisym` to find the wave number at a particular `fd` value or an array of `fd` values. They are dictionaries with interpolators at each mode, where the keys are "A0", "A1", "A2", ..., "An" (for `k_antisym`) and "S0", "S1", "S2", ..., "Sn" (for `k_sym`), with 'n' being the order of the corresponding mode.  
 
