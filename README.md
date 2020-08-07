@@ -185,7 +185,15 @@ If you want to save the animation as .mp4, .avi or .mov, you should specify the 
 Lamb.ffmpeg_path = 'C:/Program Files/ImageMagick-7.0.10-Q16/ffmpeg.exe'
 ```    
 
-If you are using some flavor of Unix, chances are ImageMagick is already installed on your computer.  
+If you are using some flavor of Unix, chances are ImageMagick is already installed on your computer. 
+
+* ***Save Results***
+
+To save all results to a txt file, you can use:
+
+```python
+alum.save_results()
+```
 
 ### Attributes
 
