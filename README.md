@@ -239,11 +239,11 @@ In order to verify that the results obtained with this code are correct, a simpl
 
 Run `validation.py` to perform the validation. The result should look like this:
 
-Phase velocity validation:
+* **Phase velocity validation:**
 
    ![alt text](https://i.imgur.com/2GmzPTM.png)  
    
-Group velocity validation:
+* **Group velocity validation:**
    
    ![alt text](https://i.imgur.com/NwpiOUB.png)  
 
