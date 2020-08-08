@@ -233,8 +233,6 @@ alum.k_sym['S0'](8000)
 
 And this should return 726.38 m-1. Always make sure that the fd values are within the valid range for the corresponding mode (i. e., below the `fd_max` you chose). Also, make sure the mode selected is within the selected `nmodes`. For example, if you chose `nmodes_sym = 5`, you can use 'S0', 'S1', 'S2', 'S3' or 'S4'.
 
-Run `example_code.py` for a ... continuara.
-
 ## Validation
 
 In order to verify that the results obtained with this code are correct, a simple validation is performed using the Dispersion software included in the [AGU-Vallen Wavelet](https://www.vallen.de/products/software/) tool, developed by in collaboration between Vallen Systeme GmbH, Aoyama Gakuin University (AGU), and University of Denver.
