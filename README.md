@@ -51,7 +51,7 @@ The following parameters are optional:
 `c_R`: Rayleigh wave velocity of the material, in m/s. Defaults to None.  
 `fd_points`: Number of frequency × thickness points. Defaults to 100.  
 `vp_step`: Increment between phase velocity intervals. Defaults to 100.  
-`material`: Name of the material being analyzed. Defaults to ''.  
+`material`: Name of the material being analyzed. Defaults to "".  
 
 ### Methods
 
