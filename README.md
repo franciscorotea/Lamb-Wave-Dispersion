@@ -22,7 +22,7 @@ pip install matplotlib
 
 ## Usage
 
-First, you need to import the `Lamb` class from the `lamb` module, and create an instanciate it. For this example, we are going to use a 10 mm Aluminum plate.
+First, you need to import the `Lamb` class from the `lamb` module, and instanciate it. For this example, we are going to use a 10 mm Aluminum plate.
 
 ```python
 from lamb import Lamb
