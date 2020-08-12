@@ -2,7 +2,7 @@
 
 Lamb waves are a type of ultrasonic elastic waves that propagate guided between the two parallel surfaces of solid plates. Lamb waves have recently gained popularity from researchers and engineers in the non-destructive evaluation community for damage identification, due to their relatively low attenuation ratio, strong penetration capability, convenience of generation and collection, and high sensitivity to structural damage even of small size. 
 
-Lamb waves propagate as two infinite sets of modes: ***symmetric modes***, in which the displacement is symmetrical about the midplane of the plate, and ***anti-symmetric modes***, with displacements anti-symmetric about the midplane. Another important characteristic of Lamb waves is their dispersive behavior: Lamb wave velocity depends on both the excitation frequency (f) and the thickness (d) of the plate combined in a frequency–thickness (f·d) product. 
+Lamb waves propagate as two infinite sets of modes: **symmetric modes**, in which the displacement is symmetrical about the midplane of the plate, and **anti-symmetric modes**, with displacements anti-symmetric about the midplane. Another important characteristic of Lamb waves is their dispersive behavior: Lamb wave velocity depends on both the excitation frequency (f) and the thickness (d) of the plate combined in a frequency–thickness (f·d) product. 
 
 This Python package presents tools to calculate and plot Lamb wave dispersion curves and particle displacement in traction-free, homogeneous and isotropic plates.
 
@@ -18,6 +18,12 @@ The code is dependant on the following external libraries: Numpy, Scipy, Matplot
 pip install numpy
 pip install scipy
 pip install matplotlib
+```
+
+In order to run `validation.py`, you will also need Pandas, which can be installed as:
+
+```
+pip install pandas
 ```
 
 ## Usage
@@ -74,7 +80,7 @@ You can use the following optional parameters with this method:
 `modes`: Which family of modes to plot. Can be 'symmetric', 'antisymmetric' or 'both'. Defaults to 'both'.  
 `cutoff_frequencies`: Add cutoff frequencies to the plot. Defaults to True.  
 `material_velocities`: Add material velocities (longitudinal, shear and Rayleigh) to the plot. Defaults to True.  
-`save_img`: Save the result image as png. Defaults to False.  
+`save_img`: Save the result image as png in the `results` folder. Defaults to False.  
 `sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
 `antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
 
@@ -96,7 +102,7 @@ You can use the following optional parameters with this method:
 
 `modes`: Which family of modes to plot. Can be 'symmetric', 'antisymmetric' or 'both'. Defaults to 'both'.  
 `cutoff_frequencies`: Add cutoff frequencies to the plot. Defaults to True.  
-`save_img`: Save the result image as png. Defaults to False.  
+`save_img`: Save the result image as png in the `results` folder. Defaults to False.  
 `sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
 `antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
 
@@ -117,7 +123,7 @@ This method produces the following plot:
 You can use the following optional parameters with this method:  
 
 `modes`: Which family of modes to plot. Can be 'symmetric', 'antisymmetric' or 'both'. Defaults to 'both'.   
-`save_img`: Save the result image as png. Defaults to False.  
+`save_img`: Save the result image as png in the `results` folder. Defaults to False.  
 `sym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the symmetric curves (to change color, linewidth, linestyle, etc.).  
 `antisym_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the antisymmetric curves (to change color, linewidth, linestyle, etc.).  
 
@@ -144,7 +150,7 @@ This method has to be used with the following parameters:
 
 The following parameters are optional:
 
-`save_img`: Number of rows in the subplot. Defaults to False.  
+`save_img`: Save the result image as png in the `results` folder. Defaults to False.  
 `inplane_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the in-plane curves (to change color, linewidth, linestyle, etc.).  
 `outofplane_style`: A dictionary with [matplotlib kwargs](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html) to modify the out-of-plane curves (to change color, linewidth, linestyle, etc.).  
 
@@ -170,8 +176,8 @@ This method has to be used with the following parameters:
 The following parameters are optional:
 
 `speed`: Delay between frames in milliseconds. It can be used to control the speed of the rotating vectors in the animation (a smaller value produces a faster animation). Defaults to 30.  
-`save_gif`: Set to True if you want to save the result animation as a gif. Defaults to False.  
-`save_video`: Choose a video format if you want to save the result animation as a video. Can be 'mp4', 'mov' or 'avi'. Defaults to False.  
+`save_gif`: Set to True if you want to save the result animation as a gif in the `results` folder. Defaults to False.  
+`save_video`: Choose a video format if you want to save the result animation as a video in the `results` folder. Can be 'mp4', 'mov' or 'avi'. Defaults to False.  
 
 ***Note***: If you want to save the animation as a gif, you should install [ImageMagick](http://www.imagemagick.org/script/download.php) and specify the full path to magick.exe like this before using the `animate_displacement` method:
 
@@ -189,7 +195,7 @@ If you are using some flavor of Unix, chances are ImageMagick is already install
 
 * **Save Results**
 
-To save all results to a txt file, you can use:
+To save all results in a txt file in the `results` folder, you can use:
 
 ```python
 alum.save_results()
