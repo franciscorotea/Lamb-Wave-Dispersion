@@ -57,7 +57,7 @@ alum.plot_wave_number()
 # Plot wave structure (displacement profiles across thickness) for A0 
 # and S0 modes at different fd values.
 
-alum.plot_wave_structure(mode='A0', nrows=3, ncols=2, save_img=True, 
+alum.plot_wave_structure(mode='A0', nrows=3, ncols=2, 
                          fd=[500,1000,1500,2000,2500,3000])
 
 alum.plot_wave_structure(mode='S0', nrows=4, ncols=2, 
