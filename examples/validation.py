@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-from lamb import Lamb
+from lambwaves import Lamb
     
 # Load phase and group velocity data from an Excel file exported from 
 # Dispersion software (1 mm aluminum plate)

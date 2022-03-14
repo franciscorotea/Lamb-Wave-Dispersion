@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from lamb import Lamb
+from lambwaves import Lamb
 
 """
 In order to set up the Lamb class, you will need the following 
