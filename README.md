@@ -12,7 +12,19 @@ The code is tested with Python 3.7. Next section provides the prerequisites to r
 
 ### Prerequisites
 
-The code is dependant on the following external libraries: Numpy, Scipy, Matplotlib. These can be installed with Python's inbuilt package management system, [pip](https://pip.pypa.io/en/stable/). See Python's tutorial on [installing packages](https://packaging.python.org/tutorials/installing-packages/#id17) for information about this issue. In short, the installation can be made as:
+The code is dependant on the following external libraries: Numpy, Scipy, Matplotlib. These can be installed with Python's inbuilt package management system, [pip](https://pip.pypa.io/en/stable/). See Python's tutorial on [installing packages](https://packaging.python.org/tutorials/installing-packages/#id17) for information about this issue.
+
+### Install using pip
+
+You can install this package with pip by doing without worrying about downloading the prerequisites by doing:
+
+```
+pip install git+https://github.com/franciscorotea/Lamb-Wave-Dispersion
+```
+
+### Manually installation
+
+The prerequisites can be installed by doing:
 
 ```
 pip install numpy
@@ -25,6 +37,8 @@ In order to run `validation.py`, you will also need Pandas, which can be install
 ```
 pip install pandas
 ```
+
+Then, you just need to download or clone this repository into an appropriate location.
 
 ## Usage
 
