@@ -42,10 +42,10 @@ Then, you just need to download or clone this repository into an appropriate loc
 
 ## Usage
 
-First, you need to import the `Lamb` class from the `lamb` module, and instanciate it. For this example, we are going to use a 10 mm Aluminum plate.
+First, you need to import the `Lamb` class from the `lambwaves` module, and instanciate it. For this example, we are going to use a 10 mm Aluminum plate.
 
 ```python
-from lamb import Lamb
+from lambwaves import Lamb
 
 alum = Lamb(thickness=10, 
             nmodes_sym=5, 
